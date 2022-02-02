@@ -3,4 +3,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto Condensed', sans-serif;
+    background: hsla(147, 44%, 62%, 1);
+    background: linear-gradient(0deg, hsla(147, 44%, 62%, 1) 0%, hsla(172, 29%, 40%, 1) 100%);
+    background: -moz-linear-gradient(0deg, hsla(147, 44%, 62%, 1) 0%, hsla(172, 29%, 40%, 1) 100%);
+    background: -webkit-linear-gradient(0deg, hsla(147, 44%, 62%, 1) 0%, hsla(172, 29%, 40%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#73C99A", endColorstr="#49857D", GradientType=1 );
 }
