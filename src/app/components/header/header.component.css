@@ -1,0 +1,49 @@
+/* font-family: 'Lato', sans-serif;
+ */
+
+.header-main {
+    background-color: #0E4BA1;
+    color: #EAFBEC;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 150px;
+}
+
+.logo-main {
+    display: flex;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.8em;
+    margin-left: 1em;
+}
+
+.logo-main h2 {
+    padding-top: .4em;
+    padding-left: .3em;
+}
+
+.logo-main img {
+    width: auto;
+    padding-right: .6em;
+    height: auto;
+    padding: 0.6em
+}
+
+.contributors {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5em;
+    margin-right: 1em;
+    justify-content: center;
+    font-style: italic;
+}
+
+.contributors a {
+    text-decoration: none;
+    color: #EAFBEC;
+}
+
+.contributors a:hover {
+    color: #FFCB05
+}
