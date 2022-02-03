@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { getUserFromAPI } from 'src/app/services/trainerAPI/trainerAPI';
+import { Router } from '@angular/router';
+import { getUserFromAPI } from 'src/app/services/trainerAPI/trainer.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,12 +8,14 @@ import { getUserFromAPI } from 'src/app/services/trainerAPI/trainerAPI';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
+  constructor(private _router: Router) {}
   userName: string = '';
-
   public handleUser = async (userName: string) => {
     const [error, user] = await getUserFromAPI(userName);
-    console.log('ERR', error);
-    console.log('USER', user);
+    if (user !== null) {
+      localStorage.setItem("trainer", user.username)
+      this._router.navigate(['trainer']);
+    }
   };
 
   public handleClick = () => {

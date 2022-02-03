@@ -12,7 +12,6 @@ export async function getUserFromAPI(userName:string) {
         }
         const response = await fetch(`${BASE_URL}`, config)
         const data = await response.json()
-        console.log(userName)
         for (let user of data) {
             if (user.username.toLowerCase() === userName.toLowerCase()) {
                 return [null, user]
@@ -43,7 +42,6 @@ export async function registerUserAPI(userName:string) {
         }
         const response = await fetch(`${BASE_URL}`, config)
         const data = await response.json()
-        console.log([null, data])
         return [null, data]
     }
     catch (error:any) {
