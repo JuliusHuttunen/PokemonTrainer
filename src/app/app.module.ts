@@ -4,10 +4,12 @@ import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuardService } from './services/guardService/authGuard.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
