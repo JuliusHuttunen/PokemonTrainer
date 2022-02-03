@@ -7,5 +7,5 @@ import { Component} from "@angular/core";
 })
 export class HeaderComponent {
     content = 'Trainer App'
-    contributors = ["@JuliusHuttunen", "@bfg122 (Sasu Korhonen)"]
+    contributors = ["@JuliusHuttunen", "@bgf122 (Sasu Korhonen)"]
 }
