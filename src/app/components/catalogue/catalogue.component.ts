@@ -17,4 +17,9 @@ export class CatalogueComponent implements OnInit {
   get pokemons(): Pokemon[] {
       return this.pokemonService.pokemons()
   }
+
+  handleItemClick = (pokemon: any) => {
+    console.log(pokemon)
+  }
 }
+

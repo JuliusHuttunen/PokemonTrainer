@@ -16,6 +16,7 @@ export class UserFormComponent {
         const [error, user] = await getUserFromAPI(userName)
         console.log("ERR", error)
         console.log("USER", user)
+        return user
     }
 
     public handleClick = () => {
