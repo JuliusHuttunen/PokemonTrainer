@@ -8,9 +8,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(): boolean {
     if (localStorage.getItem('trainer') === null) {
       this._router.navigate(['login']);
-
       return false;
-    } else  
-      return true;
+    } else return true;
   }
 }

@@ -1,50 +1,71 @@
-const BASE_URL = "https://noroff-api-2022.herokuapp.com/trainers"
-const API_KEY = "mCCrFQCflzcRNCMK+alj0mCPRlb94Nt3GH2jAJaLLu0kB4TM7+rraU8CimfYqUHh3GgpLFgyUO1oG9MoOAJrZA=="
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 
-export async function getUserFromAPI(userName:string) {
-    try {
-        const config = {
-            method: "GET",
-            headers: {
-                "Content-Type":"application/json",
-                "X-API-KEY" : API_KEY
-            },
-        }
-        const response = await fetch(`${BASE_URL}`, config)
-        const data = await response.json()
-        for (let user of data) {
-            if (user.username.toLowerCase() === userName.toLowerCase()) {
-                return [null, user]
-            }
-        }
-        return registerUserAPI(userName)
-    }
-    catch (error:any) {
-        return [error.message, null]
-    }
-}
+@Injectable({
+  providedIn: 'root',
+})
+export class TrainerService {
+  private BASE_URL: string = 'https://noroff-api-2022.herokuapp.com/trainers';
+  private API_KEY: string =
+    'mCCrFQCflzcRNCMK+alj0mCPRlb94Nt3GH2jAJaLLu0kB4TM7+rraU8CimfYqUHh3GgpLFgyUO1oG9MoOAJrZA==';
+  private _users: User[] = []
+  private _headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-API-KEY': this.API_KEY,
+  });
+  private options = { headers: this._headers };
 
-export async function registerUserAPI(userName:string) {
-    try {
-        const pokemon:string[] = []
-        const config = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-API-KEY": API_KEY
-            },
-            body: JSON.stringify(
-                {
-                    username: userName,
-                    pokemon
-                }
-            )
-        }
-        const response = await fetch(`${BASE_URL}`, config)
-        const data = await response.json()
-        return [null, data]
+  constructor(private readonly http: HttpClient) {}
+
+  public getUsersFromAPI(): void {
+    this.http.get<User[]>(this.BASE_URL, this.options).subscribe({
+      next: (users: User[]) => {
+        this._users = users;
+      },
+      error: (error) => {
+        console.log(error.message);
+      },
+    });
+  }
+
+  public userExists(username: string): boolean {
+    for (let user of this._users) {
+      if (user.username.toLowerCase() === username.toLowerCase()) {
+        localStorage.setItem('trainer', JSON.stringify(user));
+        return true;
+      } else return false;
     }
-    catch (error:any) {
-        return [error.message, null]
-    }
+    return true;
+  }
+
+  public registerNewUser(username: string): void {
+    this.http
+      .post<User>(
+        this.BASE_URL,
+        JSON.stringify({ username: username, pokemon: [] }),
+        this.options
+      )
+      .subscribe({
+        next: (user: User) => {
+          localStorage.setItem('trainer', JSON.stringify(user));
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
+  }
+
+  public catchPokemon(user: User): void {
+    this.http
+      .post<User>(`${this.BASE_URL}${user.id}`, user, this.options)
+      .subscribe({
+        next: (data: User) => {
+          console.log(data);
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
+  }
 }

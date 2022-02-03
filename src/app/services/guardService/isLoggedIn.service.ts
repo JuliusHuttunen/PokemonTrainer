@@ -9,7 +9,6 @@ export class isLoggedIn implements CanActivate {
     if (localStorage.getItem('trainer') !== null) {
       this._router.navigate(['trainer']);
       return false;
-    } else  
-      return true;
+    } else return true;
   }
 }

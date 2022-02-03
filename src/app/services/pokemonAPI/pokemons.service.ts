@@ -7,8 +7,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class PokemonsService {
   private _pokemons: Pokemon[] = [];
-  private _error: string = '';
-
   constructor(private readonly http: HttpClient) {}
 
   public fetchPokemons(): void {
@@ -18,16 +16,12 @@ export class PokemonsService {
         next: (data: any) => {
           this._pokemons = data.results;
         },
-        error: error => {
+        error: (error) => {
           console.log(error.message);
-        }
+        },
       });
   }
   public pokemons(): Pokemon[] {
     return this._pokemons;
-  }
-
-  public error(): string {
-    return this._error;
   }
 }
