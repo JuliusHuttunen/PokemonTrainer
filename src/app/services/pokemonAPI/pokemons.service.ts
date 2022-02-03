@@ -13,7 +13,7 @@ export class PokemonsService {
 
   public fetchPokemons(): void {
     this.http
-      .get<Pokemon[]>('https://pokeapi.co/api/v2/pokemon?limit=898')
+      .get<Pokemon[]>('https://pokeapi.co/api/v2/pokemon?limit=151')
       .subscribe(
         (data: any) => {
           this._pokemons = data.results;
