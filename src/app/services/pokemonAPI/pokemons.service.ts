@@ -14,14 +14,14 @@ export class PokemonsService {
   public fetchPokemons(): void {
     this.http
       .get<Pokemon[]>('https://pokeapi.co/api/v2/pokemon?limit=151')
-      .subscribe(
-        (data: any) => {
+      .subscribe({
+        next: (data: any) => {
           this._pokemons = data.results;
         },
-        (error: HttpErrorResponse) => {
-          this._error = error.message;
+        error: error => {
+          console.log(error.message);
         }
-      );
+      });
   }
   public pokemons(): Pokemon[] {
     return this._pokemons;
