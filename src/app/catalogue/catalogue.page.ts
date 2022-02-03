@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { PokemonsService } from 'src/app/services/pokemons.service';
+import { PokemonsService } from 'src/app/services/pokemonAPI/pokemons.service';
 
 @Component({
   selector: 'app-pokemon-catalogue',
-  templateUrl: './catalogue.component.html',
-  styleUrls: ['./catalogue.component.css'],
+  templateUrl: './catalogue.page.html'
 })
-export class CatalogueComponent implements OnInit {
+
+export class CataloguePage implements OnInit {
   constructor(private readonly pokemonService: PokemonsService) {}
 
   ngOnInit(): void {
