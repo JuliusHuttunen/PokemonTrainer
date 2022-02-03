@@ -6,8 +6,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PokemonsService {
-  private pokemons: Pokemon[] = [];
-  private error: string = '';
+  private _pokemons: Pokemon[] = [];
+  private _error: string = '';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -15,12 +15,19 @@ export class PokemonsService {
     this.http
       .get<Pokemon[]>('https://pokeapi.co/api/v2/pokemon?limit=1118')
       .subscribe(
-        (pokemons: Pokemon[]) => {
-          this.pokemons = pokemons;
+        (pokemons: any) => {
+          this._pokemons = pokemons.results;
         },
         (error: HttpErrorResponse) => {
-          this.error = error.message;
+          this._error = error.message;
         }
       );
+  }
+  public pokemons(): Pokemon[] {
+    return this._pokemons;
+  }
+
+  public error(): string {
+    return this._error;
   }
 }

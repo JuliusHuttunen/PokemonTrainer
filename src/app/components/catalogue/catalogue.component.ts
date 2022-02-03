@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 
 @Component({
@@ -11,5 +12,9 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonService.fetchPokemons();
+  }
+
+  get pokemons(): Pokemon[] {
+      return this.pokemonService.pokemons()
   }
 }
