@@ -4,7 +4,8 @@ import { PokemonsService } from 'src/app/services/pokemonAPI/pokemons.service';
 
 @Component({
   selector: 'app-pokemon-catalogue',
-  templateUrl: './catalogue.page.html'
+  templateUrl: './catalogue.page.html',
+  styleUrls: ['./catalogue.page.css']
 })
 
 export class CataloguePage implements OnInit {
