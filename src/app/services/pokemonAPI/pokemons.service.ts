@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PokemonsService {
-  private _pokemons: Pokemon[] = [];
+  private _pokemons: Pokemon[] = JSON.parse(sessionStorage.getItem('pokemons') || '[]');
   constructor(private readonly http: HttpClient) {}
 
   public fetchPokemons(): void {

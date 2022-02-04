@@ -10,7 +10,8 @@ import { PokemonsService } from 'src/app/services/pokemonAPI/pokemons.service';
 export class CataloguePage implements OnInit {
   constructor(private readonly pokemonService: PokemonsService) {}
   ngOnInit(): void {
-    this.pokemonService.fetchPokemons();
+    if (sessionStorage.getItem('pokemons') === null)
+      this.pokemonService.fetchPokemons();
   }
 
   get pokemons(): Pokemon[] {
