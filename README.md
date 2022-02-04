@@ -45,7 +45,7 @@ ng serve
 
 ## UI Concept
 
-![uiconcept](./src/resources/github/ui.png)
+![uiconcept](./src/assets/github/ui.png)
 
 ## Maintainers
 
