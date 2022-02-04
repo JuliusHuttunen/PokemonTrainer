@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
-import { User } from '../models/user.model';
 
 @Component({
     selector: "app-trainer-page",
@@ -13,7 +12,7 @@ export class TrainerPage {
 
     get pokemons() {
         const pokemonArray = []
-        const storageItem = localStorage.getItem('pokemontrainer') as string;
+        const storageItem = localStorage.getItem('user') as string;
         const pokemonTrainer = JSON.parse(storageItem);
         for(let idPokemon of this.idPokemons) {
             for(let pokemon of pokemonTrainer.pokemon)

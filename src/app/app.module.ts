@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/guardService/authGuard.service';
 import { isLoggedIn } from './services/guardService/isLoggedIn.service';
+import { TitlebarComponent } from './components/titlebar/titlebar.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, TitlebarComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [AuthGuardService, isLoggedIn],
   bootstrap: [AppComponent],
