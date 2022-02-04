@@ -33,7 +33,7 @@ export class TrainerService {
     for (let user of this._users) {
       if (user.username.toLowerCase() === username.toLowerCase()) {
         localStorage.setItem('trainer', JSON.stringify({ username: username }));
-        localStorage.setItem('user', JSON.stringify(user))
+        localStorage.setItem('pokemontrainer', JSON.stringify(user));
         return true;
       }
     }
@@ -51,7 +51,7 @@ export class TrainerService {
       .subscribe({
         next: (user: User) => {
           this._users.push(user);
-          localStorage.setItem('user', JSON.stringify(user))
+          localStorage.setItem('pokemontrainer', JSON.stringify(user));
         },
         error: (error) => {
           sessionStorage.clear()
