@@ -10,21 +10,18 @@ import { User } from '../models/user.model';
 export class TrainerPage {
   get pokemons(): Pokemon[] {
     const pokemonArray: Pokemon[] = [];
-    const storageItem: string = localStorage.getItem('user') as string;
-    const pokemonTrainer: User = JSON.parse(storageItem);
-    for (let idPokemon of this.idPokemons) {
-      for (let pokemon of pokemonTrainer.pokemon)
-        if (idPokemon.name === pokemon) {
-          pokemonArray.push(idPokemon);
+    const _allPokemons: Pokemon[] = JSON.parse(
+      sessionStorage.getItem('pokemons') || '[]'
+    );
+    const _trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
+    for (let ownedPokemon of _trainer.pokemon) {
+      for (let pokemon of _allPokemons) {
+        if (pokemon.name === ownedPokemon) {
+          pokemonArray.push(pokemon);
         }
+      }
     }
     return pokemonArray;
-  }
-
-  get idPokemons(): Pokemon[] {
-    const storageItem: string = sessionStorage.getItem('pokemons') as string;
-    const pokemons: Pokemon[] = JSON.parse(storageItem);
-    return pokemons;
   }
 
   handleItemClick = (pokemon: Pokemon) => {
