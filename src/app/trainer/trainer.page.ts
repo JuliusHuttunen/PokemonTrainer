@@ -9,7 +9,7 @@ import { TrainerService } from '../services/trainerAPI/trainer.service';
   templateUrl: './trainer.page.html',
   styleUrls: ['./trainer.page.css'],
 })
-export class TrainerPage implements OnInit {
+export class TrainerPage implements OnInit{
   constructor(
     private readonly trainerService: TrainerService,
     private readonly pokemonService: PokemonsService
@@ -20,7 +20,7 @@ export class TrainerPage implements OnInit {
       this.pokemonService.fetchPokemons();
   }
 
-  trainer: User = JSON.parse(localStorage.getItem('user') as any);
+  trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
 
   get pokemons(): Pokemon[] {
     const pokemonArray: Pokemon[] = [];
