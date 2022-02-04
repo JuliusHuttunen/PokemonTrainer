@@ -21,4 +21,9 @@ export class TitlebarComponent {
         this._router.navigate([path]);
     }
 
+    logOut(): void {
+        localStorage.clear()
+        this._router.navigate(['login'])
+    }
+
 }

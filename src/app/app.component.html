@@ -1,5 +1,6 @@
 <main>
     <app-header></app-header>
+    <app-titlebar *ngIf="isLoggedIn()"></app-titlebar>
     <router-outlet></router-outlet> 
 </main>
 

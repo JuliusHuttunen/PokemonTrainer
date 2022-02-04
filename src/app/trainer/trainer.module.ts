@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { TrainerPage } from './trainer.page';
 import { TrainerRoutingModule } from './trainer-routing.module';
-import { TitlebarComponent } from './components/titlebar/titlebar.component';
 
 @NgModule({
-  declarations: [TrainerPage, TitlebarComponent],
+  declarations: [TrainerPage],
   imports: [TrainerRoutingModule],
 })
 export class TrainerModule {}
