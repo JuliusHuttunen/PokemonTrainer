@@ -26,4 +26,15 @@ export class TitlebarComponent {
         this._router.navigate(['login'])
     }
 
+    currentRoute() {
+        let route = this._router.url;
+        if(route === "/trainer"){
+            return true
+        }
+        else if(route === "/catalogue"){
+            return false
+        }
+        else return true
+    }
+
 }

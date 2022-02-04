@@ -1,7 +1,7 @@
 <div class="backdrop">
     <div class="link-wrapper">
-        <span (click)="navigate('catalogue')">{{catalogueNav}}</span>
-        <span (click)="navigate('trainer')">{{trainerNav}}</span>
+        <span (click)="navigate('catalogue')" [ngClass]="{'active': !currentRoute()}">{{catalogueNav}}</span>
+        <span (click)="navigate('trainer')" [ngClass]="{'active': currentRoute()}">{{trainerNav}}</span>
     </div>
     <button (click)="logOut()" class="logout-button">Log out</button>
 </div>
