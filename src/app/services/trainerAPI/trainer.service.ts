@@ -87,7 +87,20 @@ export class TrainerService {
       });
   }
 
-  public releasePokemon(): void {
-    
+  public releasePokemon(_user: User): void {
+    this.http
+      .patch<User>(
+        `${this.BASE_URL}/${_user.id}`,
+        JSON.stringify({ pokemon: _user.pokemon }),
+        this.options
+      )
+      .subscribe({
+        next: (user: User) => {
+          localStorage.setItem('user', JSON.stringify(user));
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
   }
 }
