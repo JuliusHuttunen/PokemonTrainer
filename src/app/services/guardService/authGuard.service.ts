@@ -6,7 +6,7 @@ export class AuthGuardService implements CanActivate {
   constructor(private _router: Router) {}
 
   canActivate(): boolean {
-    if (sessionStorage.getItem('trainer') === null) {
+    if (localStorage.getItem('trainer') === null) {
       console.log('Unauthorized');
       this._router.navigate(['login']);
       return false;

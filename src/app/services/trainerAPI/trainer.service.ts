@@ -32,11 +32,11 @@ export class TrainerService {
   public userExists(username: string): boolean {
     for (let user of this._users) {
       if (user.username.toLowerCase() === username.toLowerCase()) {
-        sessionStorage.setItem('trainer', JSON.stringify({ username: username }));
+        localStorage.setItem('trainer', JSON.stringify({ username: username }));
         return true;
       }
     }
-    sessionStorage.setItem('trainer', JSON.stringify({ username: username }));
+    localStorage.setItem('trainer', JSON.stringify({ username: username }));
     return false;
   }
 
