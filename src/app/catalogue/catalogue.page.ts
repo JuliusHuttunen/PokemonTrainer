@@ -9,9 +9,11 @@ import { TrainerService } from '../services/trainerAPI/trainer.service';
   styleUrls: ['./catalogue.page.css'],
 })
 export class CataloguePage implements OnInit {
-  constructor(private readonly pokemonService: PokemonsService,
-    private readonly trainerService: TrainerService) { }
-
+  constructor(
+    private readonly pokemonService: PokemonsService,
+    private readonly trainerService: TrainerService
+  ) {}
+  
   ngOnInit(): void {
     if (sessionStorage.getItem('pokemons') === null)
       this.pokemonService.fetchPokemons();

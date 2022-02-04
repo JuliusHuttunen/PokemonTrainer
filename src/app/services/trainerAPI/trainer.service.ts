@@ -55,21 +55,25 @@ export class TrainerService {
           localStorage.setItem('user', JSON.stringify(user));
         },
         error: (error) => {
-          sessionStorage.clear()
+          sessionStorage.clear();
           console.log(error.message);
         },
       });
   }
 
   public catchPokemon(name: string): void {
-    const _user: User = JSON.parse(localStorage.getItem('user') || '[]')
-    const _pokemons: string [] = [..._user.pokemon, name]
+    const _user: User = JSON.parse(localStorage.getItem('user') || '[]');
+    const _pokemons: string[] = [..._user.pokemon, name];
 
     this.http
-      .patch<User>(`${this.BASE_URL}/${_user.id}`, JSON.stringify({pokemon : _pokemons}), this.options)
+      .patch<User>(
+        `${this.BASE_URL}/${_user.id}`,
+        JSON.stringify({ pokemon: _pokemons }),
+        this.options
+      )
       .subscribe({
         next: (user: User) => {
-          localStorage.setItem('user', JSON.stringify(user))
+          localStorage.setItem('user', JSON.stringify(user));
         },
         error: (error) => {
           console.log(error.message);
