@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
 import { User } from '../models/user.model';
+import { PokemonsService } from '../services/pokemonAPI/pokemons.service';
 import { TrainerService } from '../services/trainerAPI/trainer.service';
 
 @Component({
@@ -8,10 +9,18 @@ import { TrainerService } from '../services/trainerAPI/trainer.service';
   templateUrl: './trainer.page.html',
   styleUrls: ['./trainer.page.css'],
 })
-export class TrainerPage {
-constructor(private readonly trainerService: TrainerService) {}
+export class TrainerPage implements OnInit {
+  constructor(
+    private readonly trainerService: TrainerService,
+    private readonly pokemonService: PokemonsService
+  ) {}
 
-  trainer: User = JSON.parse(localStorage.getItem('user') as any)
+  ngOnInit(): void {
+    if (sessionStorage.getItem('pokemons') === null)
+      this.pokemonService.fetchPokemons();
+  }
+
+  trainer: User = JSON.parse(localStorage.getItem('user') as any);
 
   get pokemons(): Pokemon[] {
     const pokemonArray: Pokemon[] = [];
@@ -31,7 +40,7 @@ constructor(private readonly trainerService: TrainerService) {}
 
   handleItemClick = (index: number) => {
     const _trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
-    _trainer.pokemon.splice(index, 1)
-    this.trainerService.releasePokemon(_trainer)
+    _trainer.pokemon.splice(index, 1);
+    this.trainerService.releasePokemon(_trainer);
   };
 }
