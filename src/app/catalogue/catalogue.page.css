@@ -1,9 +1,17 @@
 .catalogue-wrapper {
-    padding: 4em;
+    padding: 1em;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 } 
+
+.description {
+    color: #EAFBEC;
+    font-family: 'Lato', sans-serif;
+    font-size: 2em;
+    padding-bottom: .2em;
+}
 
 .list-item-wrapper {
     display: grid;

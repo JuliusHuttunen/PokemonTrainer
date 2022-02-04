@@ -1,9 +1,32 @@
 .catalogue-wrapper {
-    padding: 4em;
+    padding: 1em;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-} 
+}
+
+.trainer {
+    color: #EAFBEC;
+    font-family: 'Lato', sans-serif;
+    font-size: 2em;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-style: italic;
+    background-color: #5bada8;
+    padding: 1em;
+    border: 1px solid #EAFBEC;
+    border-radius: 5px;
+    padding-bottom: .5em;
+    padding-top: .5em;
+}
+
+.collection {
+    color: #EAFBEC;
+    font-family: 'Lato', sans-serif;
+    font-size: 2em;
+    padding-bottom: .2em;
+}
 
 .list-item-wrapper {
     display: grid;
