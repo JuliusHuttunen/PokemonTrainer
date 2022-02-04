@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CataloguePage } from './catalogue.page';
-import { CatalogueRoutingModule } from './catalogue-routing.module'
+import { CatalogueRoutingModule } from './catalogue-routing.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule({

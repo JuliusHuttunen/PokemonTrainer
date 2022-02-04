@@ -8,6 +8,6 @@ import { TrainerService } from '../services/trainerAPI/trainer.service';
 export class LoginPage implements OnInit {
   constructor(private readonly trainerService: TrainerService) {}
   ngOnInit(): void {
-    this.trainerService.getUsersFromAPI()
+    this.trainerService.getUsersFromAPI();
   }
 }

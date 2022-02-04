@@ -29,7 +29,7 @@ constructor(private readonly trainerService: TrainerService) {}
     return pokemonArray;
   }
 
-  handleItemClick = (pokemon: Pokemon, index: number) => {
+  handleItemClick = (index: number) => {
     const _trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
     _trainer.pokemon.splice(index, 1)
     this.trainerService.releasePokemon(_trainer)

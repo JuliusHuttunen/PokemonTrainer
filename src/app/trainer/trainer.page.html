@@ -3,7 +3,7 @@
     <p class = "collection">Release a Pokemon by clicking on it.</p>
     <ul class="list-item-wrapper">
         <li *ngFor="let pokemon of pokemons; index as i" class="list-item">
-            <div class="item-backdrop" (click)="handleItemClick(pokemon, i)"><img
+            <div class="item-backdrop" (click)="handleItemClick(i)"><img
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.url.slice(34, -1)}}.png">
                 <span class="item-name">{{ pokemon.name[0].toUpperCase() }}{{pokemon.name.slice(1)}}</span>
             </div>

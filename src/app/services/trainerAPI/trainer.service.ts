@@ -45,10 +45,10 @@ export class TrainerService {
   public isOwned(pokemon: Pokemon, user: User): boolean {
     for (let ownedPokemons of user.pokemon) {
       if (ownedPokemons === pokemon.name) {
-        return false
+        return false;
       }
     }
-    return true
+    return true;
   }
 
   public registerNewUser(username: string): void {
