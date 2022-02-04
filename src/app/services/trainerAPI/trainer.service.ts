@@ -42,6 +42,15 @@ export class TrainerService {
     return false;
   }
 
+  public isOwned(pokemon: Pokemon, user: User): boolean {
+    for (let ownedPokemons of user.pokemon) {
+      if (ownedPokemons === pokemon.name) {
+        return false
+      }
+    }
+    return true
+  }
+
   public registerNewUser(username: string): void {
     this.http
       .post<User>(
@@ -61,14 +70,28 @@ export class TrainerService {
       });
   }
 
-  public catchPokemon(name: string): void {
-    const _user: User = JSON.parse(localStorage.getItem('user') || '[]');
-    const _pokemons: string[] = [..._user.pokemon, name];
-
+  public catchPokemon(_pokemons: string[], _user: User): void {
     this.http
       .patch<User>(
         `${this.BASE_URL}/${_user.id}`,
         JSON.stringify({ pokemon: _pokemons }),
+        this.options
+      )
+      .subscribe({
+        next: (user: User) => {
+          localStorage.setItem('user', JSON.stringify(user));
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
+  }
+
+  public releasePokemon(_user: User): void {
+    this.http
+      .patch<User>(
+        `${this.BASE_URL}/${_user.id}`,
+        JSON.stringify({ pokemon: _user.pokemon }),
         this.options
       )
       .subscribe({

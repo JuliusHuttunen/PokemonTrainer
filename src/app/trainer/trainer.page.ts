@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
 import { User } from '../models/user.model';
+import { TrainerService } from '../services/trainerAPI/trainer.service';
 
 @Component({
   selector: 'app-trainer-page',
@@ -8,6 +9,8 @@ import { User } from '../models/user.model';
   styleUrls: ['./trainer.page.css'],
 })
 export class TrainerPage {
+constructor(private readonly trainerService: TrainerService) {}
+
   get pokemons(): Pokemon[] {
     const pokemonArray: Pokemon[] = [];
     const _allPokemons: Pokemon[] = JSON.parse(
@@ -24,7 +27,9 @@ export class TrainerPage {
     return pokemonArray;
   }
 
-  handleItemClick = (pokemon: Pokemon) => {
-    console.log(pokemon);
+  handleItemClick = (pokemon: Pokemon, index: number) => {
+    const _trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
+    _trainer.pokemon.splice(index, 1)
+    this.trainerService.releasePokemon(_trainer)
   };
 }
