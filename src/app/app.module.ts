@@ -5,11 +5,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/guardService/authGuard.service';
+import { isLoggedIn } from './services/guardService/isLoggedIn.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, isLoggedIn],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

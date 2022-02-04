@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonsService {
-  private _pokemons: Pokemon[] = [];
-  private _error: string = '';
-
+  private _pokemons: Pokemon[] = JSON.parse(sessionStorage.getItem('pokemons') || '[]');
   constructor(private readonly http: HttpClient) {}
 
   public fetchPokemons(): void {
@@ -17,17 +15,14 @@ export class PokemonsService {
       .subscribe({
         next: (data: any) => {
           this._pokemons = data.results;
+          sessionStorage.setItem('pokemons', JSON.stringify(data.results))
         },
-        error: error => {
+        error: (error) => {
           console.log(error.message);
-        }
+        },
       });
   }
   public pokemons(): Pokemon[] {
     return this._pokemons;
-  }
-
-  public error(): string {
-    return this._error;
   }
 }

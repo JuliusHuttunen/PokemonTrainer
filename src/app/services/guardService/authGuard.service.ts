@@ -7,10 +7,12 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(): boolean {
     if (localStorage.getItem('trainer') === null) {
+      console.log('Unauthorized');
       this._router.navigate(['login']);
-
       return false;
-    } else  
+    } else {
+      console.log('Success');
       return true;
+    }
   }
 }
