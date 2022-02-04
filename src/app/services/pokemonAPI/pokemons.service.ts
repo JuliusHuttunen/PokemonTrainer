@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,7 @@ export class PokemonsService {
       .subscribe({
         next: (data: any) => {
           this._pokemons = data.results;
+          sessionStorage.setItem('pokemons', JSON.stringify(data.results))
         },
         error: (error) => {
           console.log(error.message);

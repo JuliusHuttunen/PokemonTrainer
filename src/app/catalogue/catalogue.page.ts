@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemonAPI/pokemons.service';
-import { TrainerService } from '../services/trainerAPI/trainer.service';
 
 @Component({
   selector: 'app-pokemon-catalogue',
@@ -9,10 +8,7 @@ import { TrainerService } from '../services/trainerAPI/trainer.service';
   styleUrls: ['./catalogue.page.css'],
 })
 export class CataloguePage implements OnInit {
-  constructor(
-    private readonly pokemonService: PokemonsService,
-    private readonly trainerService: TrainerService
-  ) {}
+  constructor(private readonly pokemonService: PokemonsService) {}
   ngOnInit(): void {
     this.pokemonService.fetchPokemons();
   }
@@ -21,8 +17,5 @@ export class CataloguePage implements OnInit {
     return this.pokemonService.pokemons();
   }
 
-  handleItemClick = (pokemon: Pokemon) => {
-
-  };
-    
+  handleItemClick = (pokemon: Pokemon) => {};
 }
