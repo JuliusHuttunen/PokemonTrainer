@@ -3,12 +3,10 @@ import { LoginPage } from '../login/login.page';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
-
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
-    
+    component: LoginPage,
   },
 ];
 
