@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.model';
 import { User } from 'src/app/models/user.model';
 
 @Injectable({
@@ -60,12 +61,15 @@ export class TrainerService {
       });
   }
 
-  public catchPokemon(user: User): void {
+  public catchPokemon(name: string): void {
+    const _user: User = JSON.parse(localStorage.getItem('user') || '[]')
+    const _pokemons: string [] = [..._user.pokemon, name]
+
     this.http
-      .post<User>(`${this.BASE_URL}${user.id}`, user, this.options)
+      .patch<User>(`${this.BASE_URL}/${_user.id}`, JSON.stringify({pokemon : _pokemons}), this.options)
       .subscribe({
-        next: (data: User) => {
-          console.log(data);
+        next: (user: User) => {
+          localStorage.setItem('user', JSON.stringify(user))
         },
         error: (error) => {
           console.log(error.message);
