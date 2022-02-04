@@ -1,28 +1,54 @@
-# PokemonTrainer
+# pokemon-trainer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Development server
+Noroff Full Stack Assignment 4 - Angular Pokemon Trainer app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is our take on the main assignment of the Noroff's Angular module.
 
-## Code scaffolding
+The main purpose of our app is to display the 151 original Pokemons.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The user can "catch" Pokemons from the catalogue and add them to their collection.
 
-## Build
+Caught Pokemons can be released to and be caught again in the catalogue.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Table of Contents
 
-## Running unit tests
+- [Install](#install)
+- [Usage](#usage)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Install
 
-## Running end-to-end tests
+Install the app to a local directory:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+git clone https://github.com/JuliusHuttunen/PokemonTrainer.git
+cd PokemonTrainer
+npm install
+```
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# PokemonTrainer
+Requires [Angular CLI.](https://github.com/angular/angular-cli)
+
+```
+ng serve
+```
+
+## Maintainers
+
+[@JuliusHuttunen](https://github.com/JuliusHuttunen)
+[@bgf122 (Sasu Korhonen)](https://github.com/bgf122)
+
+## Contributing
+
+PRs accepted.
+
+Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+## License
+
+MIT © 2022 Julius Huttunen &amp; Sasu Korhonen
