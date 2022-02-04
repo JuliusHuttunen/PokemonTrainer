@@ -1,4 +1,6 @@
 <div class="catalogue-wrapper">
+    <span class="trainer">{{trainer.username}}</span>
+    <p class = "collection">Release a Pokemon by clicking on it.</p>
     <ul class="list-item-wrapper">
         <li *ngFor="let pokemon of pokemons; index as i" class="list-item">
             <div class="item-backdrop" (click)="handleItemClick(pokemon, i)"><img

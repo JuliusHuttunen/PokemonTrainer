@@ -11,6 +11,8 @@ import { TrainerService } from '../services/trainerAPI/trainer.service';
 export class TrainerPage {
 constructor(private readonly trainerService: TrainerService) {}
 
+  trainer: User = JSON.parse(localStorage.getItem('user') as any)
+
   get pokemons(): Pokemon[] {
     const pokemonArray: Pokemon[] = [];
     const _allPokemons: Pokemon[] = JSON.parse(
