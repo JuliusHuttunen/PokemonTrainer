@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemonAPI/pokemons.service';
+import { User } from '../models/user.model';
 import { TrainerService } from '../services/trainerAPI/trainer.service';
 
 @Component({
@@ -23,6 +24,12 @@ export class CataloguePage implements OnInit {
   }
 
   handleItemClick = (pokemon: Pokemon) => {
-    this.trainerService.catchPokemon(pokemon.name);
+    const _trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
+    if (this.trainerService.isOwned(pokemon, _trainer)) {
+      this.trainerService.catchPokemon(pokemon.name);
+      alert(`${pokemon.name} CAUGHT!`)
+    } else {
+      alert('Pokemon already caught')
+    }
   };
 }
