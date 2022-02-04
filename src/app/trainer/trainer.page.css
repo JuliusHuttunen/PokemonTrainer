@@ -33,6 +33,15 @@
     filter: drop-shadow(10px 10px 4px #04522f);
     border: 2px solid #EAFBEC;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.item-backdrop:hover{
+    width: 103%;
+    background-color: #d9fcf9;
+    transition: 0.3s;
+    border-radius: 30px;
+    font-size: 1.3em;
 }
 
 .list-item img {
