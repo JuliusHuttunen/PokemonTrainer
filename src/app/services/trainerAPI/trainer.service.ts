@@ -9,7 +9,7 @@ export class TrainerService {
   private BASE_URL: string = 'https://noroff-api-2022.herokuapp.com/trainers';
   private API_KEY: string =
     'mCCrFQCflzcRNCMK+alj0mCPRlb94Nt3GH2jAJaLLu0kB4TM7+rraU8CimfYqUHh3GgpLFgyUO1oG9MoOAJrZA==';
-  private _users: User[] = []
+  private _users: User[] = [];
   private _headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'X-API-KEY': this.API_KEY,
@@ -32,11 +32,12 @@ export class TrainerService {
   public userExists(username: string): boolean {
     for (let user of this._users) {
       if (user.username.toLowerCase() === username.toLowerCase()) {
-        localStorage.setItem('trainer', JSON.stringify(user));
+        sessionStorage.setItem('trainer', JSON.stringify({ username: username }));
         return true;
-      } else return false;
+      }
     }
-    return true;
+    sessionStorage.setItem('trainer', JSON.stringify({ username: username }));
+    return false;
   }
 
   public registerNewUser(username: string): void {
@@ -48,9 +49,10 @@ export class TrainerService {
       )
       .subscribe({
         next: (user: User) => {
-          localStorage.setItem('trainer', JSON.stringify(user));
+          this._users.push(user);
         },
         error: (error) => {
+          sessionStorage.clear()
           console.log(error.message);
         },
       });

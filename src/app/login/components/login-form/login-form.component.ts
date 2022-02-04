@@ -8,15 +8,17 @@ import { TrainerService } from 'src/app/services/trainerAPI/trainer.service';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-  constructor(private _router: Router, private readonly trainerService: TrainerService) {}
+  constructor(
+    private _router: Router,
+    private readonly trainerService: TrainerService
+  ) {}
   username: string = '';
-  
 
   public handleClick = () => {
-    if (this.trainerService.userExists(this.username)) {
+    if (this.trainerService.userExists(this.username))
       this._router.navigate(['trainer']);
-    } else {
-      this.trainerService.registerNewUser(this.username)
+    else {
+      this.trainerService.registerNewUser(this.username);
       this._router.navigate(['trainer']);
     }
   };
