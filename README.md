@@ -16,9 +16,12 @@ Caught Pokemons can be released to and be caught again in the catalogue.
 
 - [Install](#install)
 - [Usage](#usage)
+- [UI Concept](#ui-concept)
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
+
+
 
 ## Install
 
@@ -32,11 +35,17 @@ npm install
 
 ## Usage
 
-Requires [Angular CLI.](https://github.com/angular/angular-cli)
+The app is deployed at [Heroku.](https://pokemon-trainer-app-angular.herokuapp.com)
+
+Local installation requires [Angular CLI.](https://github.com/angular/angular-cli)
 
 ```
 ng serve
 ```
+
+## UI Concept
+
+![uiconcept](./src/resources/github/ui.png)
 
 ## Maintainers
 
