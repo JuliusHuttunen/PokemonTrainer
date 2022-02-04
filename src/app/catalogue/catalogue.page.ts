@@ -25,8 +25,10 @@ export class CataloguePage implements OnInit {
 
   handleItemClick = (pokemon: Pokemon) => {
     const _trainer: User = JSON.parse(localStorage.getItem('user') || '[]');
+    const _pokemons: string[] = [..._trainer.pokemon, pokemon.name];
+
     if (this.trainerService.isOwned(pokemon, _trainer)) {
-      this.trainerService.catchPokemon(pokemon.name);
+      this.trainerService.catchPokemon(_pokemons, _trainer);
       alert(`${pokemon.name} CAUGHT!`)
     } else {
       alert('Pokemon already caught')

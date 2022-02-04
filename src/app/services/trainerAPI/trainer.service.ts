@@ -70,10 +70,7 @@ export class TrainerService {
       });
   }
 
-  public catchPokemon(name: string): void {
-    const _user: User = JSON.parse(localStorage.getItem('user') || '[]');
-    const _pokemons: string[] = [..._user.pokemon, name];
-
+  public catchPokemon(_pokemons: string[], _user: User): void {
     this.http
       .patch<User>(
         `${this.BASE_URL}/${_user.id}`,
@@ -88,5 +85,9 @@ export class TrainerService {
           console.log(error.message);
         },
       });
+  }
+
+  public releasePokemon(): void {
+    
   }
 }
