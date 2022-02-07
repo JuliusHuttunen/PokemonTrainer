@@ -15,11 +15,14 @@ export class LoginFormComponent {
   username: string = '';
 
   public handleClick = () => {
-    if (this.trainerService.userExists(this.username))
+    if (this.trainerService.userExists(this.username) && this.username !== '')
       this._router.navigate(['trainer']);
-    else {
+    else if(!this.trainerService.userExists(this.username) && this.username !== ''){
       this.trainerService.registerNewUser(this.username);
       this._router.navigate(['trainer']);
+    }
+    else {
+      alert("Invalid username!")
     }
   };
 }
